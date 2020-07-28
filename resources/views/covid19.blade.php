@@ -25,7 +25,7 @@
                 verplicht te registreren
                 welke personen aanwezig zijn geweest In De Kleine Hall.</p>
 
-            <form>
+            <form action=" {!! action('Covid19Controller@register') !!}" method="POST">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFirstName">Naam</label>
@@ -40,10 +40,26 @@
                     <label for="inputEmail">E-mailadres</label>
                     <input type="email" class="form-control" id="inputEmail">
                 </div>
+                <p class="text-center">OF</p>
                 <div class="form-group">
-                        <label for="inputPhone">Telefoon</label>
-                        <input type="text" class="form-control" id="inputPhone">
-                    </div>
+                    <label for="inputPhone">Telefoon</label>
+                    <input type="text" class="form-control" id="inputPhone">
+                </div>
+                <div class="form-group">
+                    <label for="inputPeople">Aantal mensen</label>
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Verzenden</button>
             </form>
 
