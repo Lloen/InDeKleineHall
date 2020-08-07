@@ -17,8 +17,8 @@ class CreateCovid19RegistrationsTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->integer('number_of_people');
             $table->timestamps();
         });

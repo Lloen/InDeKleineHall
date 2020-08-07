@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'Controller@show');
 Route::get('/registratie-covid-19', 'Covid19Controller@show');
+Route::post('/registratie-covid-19', 'Covid19Controller@register');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
