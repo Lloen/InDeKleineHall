@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,35 +19,46 @@
 
 <body>
     <div class="card">
+        <div class="card-header">
+            <h5 class="text-center">In De Kleine Hal Registratie Covid-19</h5>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">Registratie Covid-19</h5>
-            <p class="card-text">Beste klant, door de recent gewijzigde maatregelen met betrekking tot COVID-19 zijn wij
+            <p class="card-text text-center">Beste klant, door de recent gewijzigde maatregelen met betrekking tot COVID-19 zijn wij
                 verplicht te registreren
-                welke personen aanwezig zijn geweest In De Kleine Hall.</p>
+                welke personen aanwezig zijn geweest In De Kleine Hal.</p>
 
-            <form action=" {!! action('Covid19Controller@register') !!}" method="POST">
+            <!-- Success message -->
+            @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+            @endif
+
+            @if (Cookie::get('covid19Register') == null)
+            <form action="{{ action('Covid19Controller@register') }}" method="POST">
+                @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFirstName">Naam</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputSurname">Achternaam</label>
-                        <input type="text" class="form-control" id="inputSurname" placeholder="Achternaam">
+                        <label for="inputLastName">Achternaam</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">E-mailadres</label>
-                    <input type="email" class="form-control" id="inputEmail">
+                    <input type="email" class="form-control contact-group" id="inputEmail" name="email">
                 </div>
                 <p class="text-center">OF</p>
                 <div class="form-group">
                     <label for="inputPhone">Telefoon</label>
-                    <input type="text" class="form-control" id="inputPhone">
+                    <input type="text" class="form-control contact-group" id="inputPhone" name="phone">
                 </div>
                 <div class="form-group">
                     <label for="inputPeople">Aantal mensen</label>
-                    <select class="form-control">
+                    <select class="form-control" name="numberOfPeople" required>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -60,11 +71,32 @@
                         <option>10</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Verzenden</button>
+                <p class="text-center">Uw gegevens worden nooit met iemand gedeeld.</p>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Verzenden" />
             </form>
-
+            @else
+            <h1 class="card-text text-center">✔️</h1>
+            <h2 class="card-text text-center"> Geregistreerd voor vandaag, laat dit aan de ober zien. </h2>
+            <h2 class="card-text text-center"> Stay safe! </h2>
+            <h5 class="card-text text-center"> With ❤️ In De Kleine Hal </h5>
+            <p class="card-text text-center">{{ request()->cookie('covid19Register') }} {{ date("Y-m-d") }}</p>
+            @endif
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    $.validator.messages.required = 'Dit is vereist.';
+    $("form").validate({
+        rules: {
+            email: {
+                required: '#inputPhone:blank'
+            },
+            phone: {
+                required: '#inputEmail:blank'
+            }
+        }
+    });
+</script>
 
 </html>
