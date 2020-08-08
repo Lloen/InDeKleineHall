@@ -27,12 +27,24 @@
                 verplicht te registreren
                 welke personen aanwezig zijn geweest In De Kleine Hal.</p>
 
-            <!-- Success message -->
-            @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-            @endif
+            @php
+            {{
+                $firstName = "";
+                $lastName = "";
+                $email = "";
+                $phone = "";
+
+                if(Cookie::get('covid19Profile') != null)
+                {
+                    $profile = json_decode(request()->cookie('covid19Profile'));
+
+                    $firstName = $profile->first_name;
+                    $lastName = $profile->last_name;
+                    $email = $profile->email;
+                    $phone = $profile->phone;
+                }
+            }}
+            @endphp
 
             @if (Cookie::get('covid19Register') == null)
             <form action="{{ action('Covid19Controller@register') }}" method="POST">
@@ -40,21 +52,21 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFirstName">Naam</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" required>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" value="{{$firstName}}" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputLastName">Achternaam</label>
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" required>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" value="{{$lastName}}" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail">E-mailadres</label>
-                    <input type="email" class="form-control contact-group" id="inputEmail" name="email">
+                    <input type="email" class="form-control contact-group" id="inputEmail" name="email" value="{{$email}}">
                 </div>
                 <p class="text-center">OF</p>
                 <div class="form-group">
                     <label for="inputPhone">Telefoon</label>
-                    <input type="text" class="form-control contact-group" id="inputPhone" name="phone">
+                    <input type="text" class="form-control contact-group" id="inputPhone" name="phone" value="{{$phone}}">
                 </div>
                 <div class="form-group">
                     <label for="inputPeople">Aantal mensen</label>

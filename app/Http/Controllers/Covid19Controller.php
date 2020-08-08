@@ -18,7 +18,6 @@ class Covid19Controller extends Controller
 
     public function register(Request $request)
     {
-
         // Form validation
         $this->validate($request, [
             'firstName' => 'required',
@@ -51,7 +50,14 @@ class Covid19Controller extends Controller
         $mins = (intval($diff->format('%h')) * 60) + intval($diff->format('%i'));
 
         return redirect()->action('Covid19Controller@show')
-            ->withCookie(cookie('covid19Register', $firstName, $mins));
-        //->withCookie(cookie()->forever('covid19Profile', $covid19Profile));
+            ->withCookie(cookie('covid19Register', $firstName, $mins))
+            ->withCookie(cookie()->forever('covid19Profile', $covid19Profile));
+    }
+
+    public function reregister()
+    {
+        $cookie = cookie()->forget('covid19Register');
+        return redirect()->action('Covid19Controller@show')
+            ->withCookie($cookie);
     }
 }
