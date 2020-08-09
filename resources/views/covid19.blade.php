@@ -52,11 +52,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputFirstName">Naam</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" value="{{$firstName}}" required>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" value="{{$firstName}}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputLastName">Achternaam</label>
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" value="{{$lastName}}" required>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" value="{{$lastName}}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -102,10 +102,23 @@
     </div>
 </body>
 
+<style>
+    .validation-error-class {
+        color: #FF0000;
+    }
+</style>
+
 <script type="text/javascript">
     $.validator.messages.required = 'Dit is vereist.';
     $("form").validate({
+        errorClass: "validation-error-class",
         rules: {
+            firstName: {
+                required: true
+            },
+            lastName: {
+                required: true
+            },
             email: {
                 required: '#inputPhone:blank'
             },
