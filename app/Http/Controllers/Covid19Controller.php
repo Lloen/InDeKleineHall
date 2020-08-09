@@ -52,7 +52,6 @@ class Covid19Controller extends Controller
         $mins = (intval($diff->format('%h')) * 60) + intval($diff->format('%i'));
 
         return redirect()->action('Covid19Controller@show')
-            ->header('Cache-Control', 'max-age=' + $mins * 60 + ', public')
             ->withCookie(cookie('covid19Register', $firstName, $mins))
             ->withCookie(cookie()->forever('covid19Profile', $covid19Profile));
     }
