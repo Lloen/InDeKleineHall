@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Controller@show');
 
 // Covid-19
-Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19');
+Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19')->middleware('cache.headers:public;max_age=10');
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
 
 //Menu
