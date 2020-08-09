@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Controller@show');
-Route::get('/registratie-covid-19', 'Covid19Controller@show');
+
+// Covid-19
+Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19');
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
+
+//Menu
+Route::get('/menu', 'MenuController@show')->name('menu');
 
 //Auth::routes();
 
