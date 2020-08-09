@@ -51,12 +51,12 @@
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputFirstName">Naam</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="Naam" name="firstName" value="{{$firstName}}" autocomplete="name">
+                        <label for="inputFirstName">Voornaam</label>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="Voornaam" name="firstName" value="{{$firstName}}" autocomplete="name">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputLastName">Achternaam</label>
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Achternaam" name="lastName" value="{{$lastName}}" autocomplete="family-name">
+                        <label for="inputLastName">Naam</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Naam" name="lastName" value="{{$lastName}}" autocomplete="family-name">
                     </div>
                 </div>
                 <div class="form-group">
@@ -97,6 +97,7 @@
             <h2 class="card-text text-center"> Stay safe! </h2>
             <h5 class="card-text text-center"> With ❤️ In De Kleine Hal </h5>
             <p class="card-text text-center">{{ request()->cookie('covid19Register') }} {{ date("Y-m-d") }}</p>
+            <a class="btn btn-primary btn-lg btn-block" href="{{ route('menu') }}">{{ __('🍺 Ons Menu 🍺') }}</a>
             @endif
         </div>
     </div>
