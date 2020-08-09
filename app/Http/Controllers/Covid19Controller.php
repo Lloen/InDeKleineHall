@@ -7,12 +7,14 @@ use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class Covid19Controller extends Controller
 {
     public function show()
     {
+        Cache::forget('key');
         return view("covid19");
     }
 
@@ -50,6 +52,7 @@ class Covid19Controller extends Controller
         $mins = (intval($diff->format('%h')) * 60) + intval($diff->format('%i'));
 
         return redirect()->action('Covid19Controller@show')
+            ->header('Cache-Control', 'max-age=' + $mins * 60 + ', public')
             ->withCookie(cookie('covid19Register', $firstName, $mins))
             ->withCookie(cookie()->forever('covid19Profile', $covid19Profile));
     }
