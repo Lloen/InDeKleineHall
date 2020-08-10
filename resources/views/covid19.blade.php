@@ -83,6 +83,10 @@
                         <option>10</option>
                     </select>
                 </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" id="checkRememberMe" name="rememberMe" checked>
+                    <label class="custom-control-label" for="checkRememberMe">Onthoud mijn gegevens</label>
+                </div>
                 <p class="text-center">Uw gegevens worden nooit met iemand gedeeld.</p>
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="Verzenden" />
             </form>
@@ -127,6 +131,10 @@
                 required: '#inputEmail:blank'
             }
         }
+    });
+
+    $('form').submit(function() {
+        $(this).find(':submit').attr('disabled', 'disabled');
     });
 </script>
 

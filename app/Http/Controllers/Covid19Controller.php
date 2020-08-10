@@ -8,13 +8,13 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class Covid19Controller extends Controller
 {
     public function show()
     {
-        Cache::forget('key');
         return view("covid19");
     }
 
@@ -44,7 +44,12 @@ class Covid19Controller extends Controller
 
         $covidRegistration->save();
 
-        $covid19Profile = json_encode($covidRegistration);
+        if ($request->has('rememberMe')) {
+            $covid19Profile = json_encode($covidRegistration);
+            $cookieProfile = cookie()->forever('covid19Profile', $covid19Profile);
+        } else {
+            $cookieProfile = cookie()->forget('covid19Profile');
+        }
 
         $now = new DateTime('now');
         $midnight = new DateTime(date('Y-m-d H:i:s', strtotime('11.59pm')));
@@ -52,8 +57,8 @@ class Covid19Controller extends Controller
         $mins = (intval($diff->format('%h')) * 60) + intval($diff->format('%i'));
 
         return redirect()->action('Covid19Controller@show')
-            ->withCookie(cookie('covid19Register', $firstName, $mins))
-            ->withCookie(cookie()->forever('covid19Profile', $covid19Profile));
+            ->withCookie($cookieProfile)
+            ->withCookie(cookie('covid19Register', $firstName, 1));
     }
 
     public function reregister()
