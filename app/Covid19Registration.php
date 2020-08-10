@@ -14,7 +14,7 @@ class Covid19Registration extends Model
         'first_name',
         'last_name',
         'email',
-        'n',
+        'phone',
         'number_of_people'
     ];
 }
