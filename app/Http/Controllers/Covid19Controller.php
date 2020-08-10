@@ -63,7 +63,7 @@ class Covid19Controller extends Controller
 
     public function signOut(Request $request)
     {
-        $profile = json_decode($request->cookie('covid19Profile'));
+        //$profile = json_decode($request->cookie('covid19Profile'));
 
         $cookie = cookie()->forget('covid19Register');
         return redirect()->action('Covid19Controller@show')

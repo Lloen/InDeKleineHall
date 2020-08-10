@@ -47,7 +47,7 @@
             @endphp
 
             @if (Cookie::get('covid19Register') == null)
-            <form action="{{ action('Covid19Controller@register') }}" method="POST">
+            <form action="{{ action('Covid19Controller@register') }}" method="POST" id="formCovidRegistration">
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -83,7 +83,7 @@
                         <option>10</option>
                     </select>
                 </div>
-                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <div class="custom-control custom-checkbox my-1 mr-sm-2 text-center">
                     <input type="checkbox" class="custom-control-input" id="checkRememberMe" name="rememberMe" checked>
                     <label class="custom-control-label" for="checkRememberMe">Onthoud mijn gegevens</label>
                 </div>
@@ -102,6 +102,12 @@
             <h5 class="card-text text-center"> With ❤️ In De Kleine Hal </h5>
             <p class="card-text text-center">{{ request()->cookie('covid19Register') }} {{ date("Y-m-d") }}</p>
             <a class="btn btn-primary btn-lg btn-block" href="{{ route('menu') }}">{{ __('🍺 Ons Menu 🍺') }}</a>
+            <form action="{{ action('Covid19Controller@signOut') }}" method="POST">
+                @csrf
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary btn-sm mt-3" value="{{ __('Afmelden') }}" />
+                </div>
+            </form>
             @endif
         </div>
     </div>
@@ -115,7 +121,7 @@
 
 <script type="text/javascript">
     $.validator.messages.required = 'Dit is vereist.';
-    $("form").validate({
+    $("#formCovidRegistration").validate({
         errorClass: "validation-error-class",
         rules: {
             firstName: {
