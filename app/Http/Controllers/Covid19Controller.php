@@ -58,11 +58,13 @@ class Covid19Controller extends Controller
 
         return redirect()->action('Covid19Controller@show')
             ->withCookie($cookieProfile)
-            ->withCookie(cookie('covid19Register', $firstName, 1));
+            ->withCookie(cookie('covid19Register', $firstName, $mins));
     }
 
-    public function reregister()
+    public function signOut(Request $request)
     {
+        $profile = json_decode($request->cookie('covid19Profile'));
+
         $cookie = cookie()->forget('covid19Register');
         return redirect()->action('Covid19Controller@show')
             ->withCookie($cookie);
