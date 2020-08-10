@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\DaySession;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,11 @@ Route::get('/', 'Controller@show');
 // Covid-19
 Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19')->middleware(DaySession::class); //->middleware('cache.headers:private;max_age=3600;etag');
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
+Route::post('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name('covid19SignOut');
 
 //Menu
 Route::get('/menu', 'MenuController@show')->name('menu');
 
-//Auth::routes();
+Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
