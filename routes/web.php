@@ -22,9 +22,13 @@ Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19')-
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
 Route::post('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name('covid19SignOut');
 
-//Menu
+// Menu
 Route::get('/menu', 'MenuController@show')->name('menu');
 
+// Authentication
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Resources
+Route::resource('/menu-onderdeel', 'MenuItemController')->middleware('auth');;
