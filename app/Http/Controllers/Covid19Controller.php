@@ -69,4 +69,16 @@ class Covid19Controller extends Controller
         return redirect()->action('Covid19Controller@show')
             ->withCookie($cookie);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data['covid19Registrations'] = Covid19Registration::orderBy('created_at', 'asc')->paginate(10);
+
+        return view('covid19.list', $data);
+    }
 }
