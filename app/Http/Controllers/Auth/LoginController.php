@@ -42,12 +42,12 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'email';
+        return 'username';
     }
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['username', 'password']);
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
