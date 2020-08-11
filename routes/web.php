@@ -21,6 +21,8 @@ Route::get('/', 'Controller@show');
 Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19')->middleware(DaySession::class); //->middleware('cache.headers:private;max_age=3600;etag');
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
 Route::post('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name('covid19SignOut');
+Route::get('/registratie-covid-19/registraties', 'Covid19Controller@index')->name('covid19Registraties')->middleware('auth');
+
 
 //Menu
 Route::get('/menu', 'MenuController@show')->name('menu');
