@@ -25,6 +25,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('img/InDeKleineHalLogo.png') }}" width="40" height="50" alt="">
+                </a>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -41,10 +44,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-center text-dark" href="{{ route('covid-19') }}">{{ __('✏️ Registratie Covid-19') }}</a>
+                            <a class="nav-link text-center text-dark" href="{{ route('covid-19') }}">✏️ Registratie Covid-19</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-center text-dark" href="{{ route('menu') }}">{{ __('🍺 Menu') }}</a>
+                            <a class="nav-link text-center text-dark" href="{{ route('menu') }}">🍺 Menu</a>
                         </li>
                         @if(Auth::check())
                         <li class="nav-item dropdown">
