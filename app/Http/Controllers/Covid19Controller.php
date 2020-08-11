@@ -24,8 +24,8 @@ class Covid19Controller extends Controller
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            // 'email' => 'required_without:phone|email',
-            // 'phone' => 'required_without:email|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'email' => 'required_without:phone|email',
+            'phone' => 'required_without:email',
             'numberOfPeople' => 'required'
         ]);
 
