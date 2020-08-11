@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('img/InDeKleineHalLogo.png') }}" width="40" height="50" alt="">
                 </a>
                 <a class="navbar-brand" href="{{ url('/') }}">
