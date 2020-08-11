@@ -41,10 +41,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('covid-19') }}">{{ __('✏️ Registratie Covid-19') }}</a>
+                            <a class="nav-link text-center text-dark" href="{{ route('covid-19') }}">{{ __('✏️ Registratie Covid-19') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('menu') }}">{{ __('🍺 Menu') }}</a>
+                            <a class="nav-link text-center text-dark" href="{{ route('menu') }}">{{ __('🍺 Menu') }}</a>
                         </li>
                         @if(Auth::check())
                         <li class="nav-item dropdown">
