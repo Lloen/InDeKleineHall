@@ -18,8 +18,6 @@ class CreateMenuItemTable extends Migration
             $table->unsignedBigInteger('menu_category_id');
             $table->unsignedBigInteger('menu_subcategory_id');
             $table->string('name');
-            $table->integer('quantity');
-            $table->decimal('price', 3, 2);
             $table->timestamps();
         });
 
