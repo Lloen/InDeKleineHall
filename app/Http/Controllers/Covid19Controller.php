@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Covid19Registration;
+use Carbon\Carbon;
 use DateInterval;
 use DateTime;
 use Illuminate\Http\Request;
@@ -77,7 +78,7 @@ class Covid19Controller extends Controller
      */
     public function index()
     {
-        $data['covid19Registrations'] = Covid19Registration::orderBy('created_at', 'asc')->paginate(10);
+        $data['covid19Registrations'] = Covid19Registration::whereDate('created_at', '=', Carbon::today()->toDateString())->orderBy('created_at', 'desc')->get();
 
         return view('covid19.list', $data);
     }
