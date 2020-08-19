@@ -47,7 +47,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only(['username', 'password']);
+        $credentials = $request->only(['username', 'password', 'remember']);
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
