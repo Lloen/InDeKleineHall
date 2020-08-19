@@ -15,18 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Controller@show');
-
 // Covid-19
 Route::get('/registratie-covid-19', 'Covid19Controller@show')->name('covid-19')->middleware(DaySession::class); //->middleware('cache.headers:private;max_age=3600;etag');
 Route::post('/registratie-covid-19', 'Covid19Controller@register');
-Route::post('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name('covid19SignOut');
-Route::get('/registratie-covid-19/registraties', 'Covid19Controller@index')->name('covid19Registraties')->middleware('auth');
+Route::get('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name('covid19SignOut');
 
-
-//Menu
+// Menu
 Route::get('/menu', 'MenuController@show')->name('menu');
 
-Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
+// Authentication
+//Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
+Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login', function () {
+    return redirect()->route('login');
+});
+Route::post('/dashboard/login', 'Auth\LoginController@login');
+Route::post('/dashboard/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Dashboard
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::post('/registraties-covid-19', 'Covid19Controller@getDateList');
+    Route::get('/registraties-covid-19', 'Covid19Controller@index')->name('covid19Registraties');
+});
+
+Route::get('/', 'Controller@show');
