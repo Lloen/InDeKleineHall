@@ -25,12 +25,12 @@ class Covid19Controller extends Controller
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            'email' => 'required_without:phone|email',
-            'phone' => 'required_without:email',
+            //'email' => 'required_without:phone',
+            //'phone' => 'required_without:email',
             'numberOfPeople' => 'required'
         ]);
 
-        $firstName = $request->input('firstName');
+        $firstName = explode(' ', trim($request->input('firstName')))[0];
         $lastName = $request->input('lastName');
         $email = $request->input('email');
         $phone = $request->input('phone');
@@ -81,5 +81,15 @@ class Covid19Controller extends Controller
         $data['covid19Registrations'] = Covid19Registration::whereDate('created_at', '=', Carbon::today()->toDateString())->orderBy('created_at', 'desc')->get();
 
         return view('covid19.list', $data);
+    }
+
+    public function getDateList(Request $request)
+    {
+        $date = $request->date;
+        $date = strtotime($date);
+
+        $data['covid19Registrations'] = Covid19Registration::whereDate('created_at', '=', date('Y-m-d H:i:s', $date))->orderBy('created_at', 'desc')->get();
+
+        return (json_encode($data));
     }
 }
