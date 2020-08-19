@@ -20,6 +20,7 @@
 @endphp
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -39,7 +40,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputFirstName">Voornaam</label>
-                                <input type="text" class="form-control" id="inputFirstName" placeholder="Voornaam" name="firstName" value="{{$firstName}}" autocomplete="name">
+                                <input type="text" class="form-control" id="inputFirstName" placeholder="Voornaam" name="firstName" value="{{$firstName}}" autocomplete="given-name">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputLastName">Naam</label>
@@ -119,11 +120,11 @@
             phone: {
                 required: '#inputEmail:blank'
             }
+        },
+        submitHandler: function(form) {
+            $('form input[type=submit]').attr('disabled', 'disabled');
+            form.submit();
         }
-    });
-
-    $('form').submit(function() {
-        $(this).find(':submit').attr('disabled', 'disabled');
     });
 </script>
 @endsection
