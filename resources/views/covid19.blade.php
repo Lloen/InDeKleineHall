@@ -105,7 +105,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $.validator.messages.required = 'Dit is vereist.';
         $("#formCovidRegistration").validate({
             errorClass: "validation-error-class",
             rules: {
@@ -122,6 +121,10 @@
                 phone: {
                     required: '#inputEmail:blank'
                 }
+            },
+            messages: {
+                required: 'Dit is vereist.',
+                email: 'E-mailadres lijkt niet correct.'
             },
             submitHandler: function(form) {
                 if (form.valid()) {
