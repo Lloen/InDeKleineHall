@@ -104,27 +104,32 @@
 </style>
 
 <script type="text/javascript">
-    $.validator.messages.required = 'Dit is vereist.';
-    $("#formCovidRegistration").validate({
-        errorClass: "validation-error-class",
-        rules: {
-            firstName: {
-                required: true
+    $(document).ready(function() {
+        $.validator.messages.required = 'Dit is vereist.';
+        $("#formCovidRegistration").validate({
+            errorClass: "validation-error-class",
+            rules: {
+                firstName: {
+                    required: true
+                },
+                lastName: {
+                    required: true
+                },
+                email: {
+                    required: '#inputPhone:blank',
+                    email: true
+                },
+                phone: {
+                    required: '#inputEmail:blank'
+                }
             },
-            lastName: {
-                required: true
-            },
-            email: {
-                required: '#inputPhone:blank'
-            },
-            phone: {
-                required: '#inputEmail:blank'
+            submitHandler: function(form) {
+                if (form.valid()) {
+                    $('form input[type=submit]').attr('disabled', 'disabled');
+                    form.submit();
+                }
             }
-        },
-        submitHandler: function(form) {
-            $('form input[type=submit]').attr('disabled', 'disabled');
-            form.submit();
-        }
+        });
     });
 </script>
 @endsection
