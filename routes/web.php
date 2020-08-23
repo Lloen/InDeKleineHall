@@ -25,11 +25,11 @@ Route::get('/menu', 'MenuController@show')->name('menu');
 
 // Authentication
 //Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
-Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/dashboard/inloggen', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/login', function () {
     return redirect()->route('login');
 });
-Route::post('/dashboard/login', 'Auth\LoginController@login');
+Route::post('/dashboard/inloggen', 'Auth\LoginController@login');
 Route::post('/dashboard/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Dashboard
