@@ -105,14 +105,19 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $.validator.addMethod("regex", function(value, element, regexpr) {
+            return regexpr.test(value);
+        }, "Dit lijkt niet correct.");
         $("#formCovidRegistration").validate({
             errorClass: "validation-error-class",
             rules: {
                 firstName: {
-                    required: true
+                    required: true,
+                    regex: /^[a-z ,.'-]+$/i
                 },
                 lastName: {
-                    required: true
+                    required: true,
+                    regex: /^[a-z ,.'-]+$/i
                 },
                 email: {
                     required: '#inputPhone:blank',
