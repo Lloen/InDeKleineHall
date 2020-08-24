@@ -9,7 +9,7 @@
             <input class="form-control my-2" type="search" placeholder="Search">
             <div class="container">
                 <div class="row">
-                    <input type="button" class="btn btn-secondary col-md-11 datepicker" data-date-format="dd-mm-yyyy" value="{{date('d-m-yy')}}" data-provide="datepicker" />
+                    <input type="date" class="btn btn-secondary col-md-11" id="datepicker" value="{{date('Y-m-d')}}" href="#" />
                     <button class="btn btn-outline-success col-md-1">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z" />
@@ -22,8 +22,8 @@
             <table class="table table-sm table-striped">
                 <thead>
                     <tr>
-                        <th>{{__('Naam')}}</th>
-                        <th>{{__('Tijd')}}</th>
+                        <th>Naam</th>
+                        <th>Tijd</th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -70,22 +70,13 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        var datepicker = $.fn.datepicker.noConflict();
-        $.fn.bootstrapDP = datepicker;
-
-        $('.datepicker').bootstrapDP();
-
-        $('.datepicker').on('changeDate', function() {
-            var chosenDate = $('.datepicker:first').bootstrapDP('getFormattedDate');
-            $('.datepicker').bootstrapDP('destroy');
-            $('.datepicker').val(
-                chosenDate
-            );
+        $('#datepicker').change(function() {
+            var date = $(this).val();
             $.ajax({
                 type: 'POST',
                 url: '/dashboard/registraties-covid-19',
                 data: {
-                    date: chosenDate
+                    date: date
                 },
                 headers: {
                     'X-CSRF-Token': '{{ csrf_token() }}'
