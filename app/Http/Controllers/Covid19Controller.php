@@ -83,13 +83,65 @@ class Covid19Controller extends Controller
         return view('covid19.list', $data);
     }
 
-    public function getDateList(Request $request)
+
+    public function getListRegistrations(String $date)
     {
-        $date = $request->date;
         $date = strtotime($date);
 
-        $data['covid19Registrations'] = Covid19Registration::whereDate('created_at', '=', date('Y-m-d H:i:s', $date))->orderBy('created_at', 'desc')->get();
+        $data = Covid19Registration::whereDate('created_at', '=', date('Y-m-d H:i:s', $date))->orderBy('created_at', 'desc')->get();
 
         return (json_encode($data));
+    }
+
+    public function getDateList(Request $request)
+    {
+        $jsonList = $this->getListRegistrations($request->date);
+
+        return ($jsonList);
+    }
+
+    public function getDownloadList(Request $request)
+    {
+        $date = $request->date;
+        $jsonList = $this->getListRegistrations($date);
+        $filename = $date . '_InDeKleineHal_Covid19_Registraties.txt';
+
+        $jsonList = json_decode($jsonList);
+        $content = "<b><u>Covid19 Registraties $date In De Kleine Hal:</u></b>";
+        $content .= "\n";
+        $content .= "Aantal registraties online: ";
+        $content .= count($jsonList);
+        $content .= "\n";
+        $content .= "<i>JSON-bestand hieronder.</i>";
+        $content .= "\n";
+        $content .= "\n";
+        foreach ($jsonList as $key => $value) {
+            $key++;
+            $content .= "<b>$key:</b>";
+            $content .= "\n";
+            $content .= "\t <u>Naam</u>: $value->first_name $value->last_name";
+            $content .= "\n";
+            $content .= "\t <u>Tijd</u>: ";
+            $content .= date("d/m/Y H:i:s", strtotime($value->created_at));
+            $content .= "\n";
+            $content .= "\t <u>Email</u>: $value->email";
+            $content .= "\n";
+            $content .= "\t <u>Telefoon</u>: $value->phone";
+            $content .= "\n";
+            $content .= "\t <u>Aantal mensen</u>: $value->number_of_people";
+            $content .= "\n";
+            $content .= "\n";
+        }
+        $content .= "\n";
+        $content .= "\n";
+        $content .= "<b><u>JSON:</b></u>";
+        $content .= "\n";
+        $content .= json_encode($jsonList);
+
+        return response()->streamDownload(function () use ($content) {
+            echo strip_tags($content);
+        }, $filename, [
+            'Content-Type' => 'text/plain'
+        ]);
     }
 }
