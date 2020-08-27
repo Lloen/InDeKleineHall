@@ -10,13 +10,13 @@
             <div class="container">
                 <div class="row">
                     <input type="date" class="btn btn-secondary col-md-11" id="datepicker" value="{{date('Y-m-d')}}" href="#" />
-                    <button class="btn btn-outline-success col-md-1">
+                    <a class="btn btn-outline-success col-md-1" href="#" download="test.txt" id="download">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z" />
                             <path fill-rule="evenodd" d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z" />
                             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
             <table class="table table-sm table-striped">
@@ -70,6 +70,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $('#download').on('click', function() {
+            var date = $('#datepicker').val();
+            $(this).attr('href', '/dashboard/registraties-covid-19/download?date=' + date);
+        });
         $('#datepicker').change(function() {
             var date = $(this).val();
             $.ajax({
@@ -83,8 +87,8 @@
                 },
                 success: function(registrations) {
                     $('.table tbody').empty();
-                    $.each(JSON.parse(registrations).covid19Registrations, function(i, profile) {
-                        $('.table tbody').append('<tr href="#" data-toggle="modal" data-id="1" data-target="#modalProfile" data-name="' + profile.first_name + " " + profile.last_name + '" data-created-at="' + profile.created_at + '" data-email="' + profile.email + '" data-phone="' + profile.phone + '" data-number-of-people="' + profile.number_of_people + '"><td>' + profile.first_name + " " + profile.last_name + '</td><td>' + profile.created_at + '</td><td>' + profile.number_of_people + '</td></tr>');
+                    $.each(JSON.parse(registrations), function(i, profile) {
+                        $('.table tbody').append('<tr href="#" data-toggle="modal" data-id="1" data-target="#modalProfile" data-name="' + profile.first_name + " " + profile.last_name + '" data-created-at="' + (new Date(profile.created_at)).toLocaleString() + '" data-email="' + profile.email + '" data-phone="' + profile.phone + '" data-number-of-people="' + profile.number_of_people + '"><td>' + profile.first_name + " " + profile.last_name + '</td><td>' + (new Date(profile.created_at)).toLocaleString('en-GB') + '</td><td>' + profile.number_of_people + '</td></tr>');
                     });
                 }
             });
