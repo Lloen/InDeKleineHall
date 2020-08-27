@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <a type="button" class="btn btn-outline-dark btn-block" href="{{ route('covid19Registraties') }}">Covid-19 registraties</a>
-                    <a type="button" class="btn btn-outline-dark btn-block" href="{{ route('covid19Registraties') }}">Menu</a>
-                    <a type="button" class="btn btn-danger btn-block" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <a class="btn btn-outline-dark btn-block" href="{{ route('covid19Registraties') }}">Covid-19 registraties</a>
+                    <a class="btn btn-outline-dark btn-block disabled" href="{{ route('covid19Registraties') }}">Menu</a>
+                    <a class="btn btn-danger btn-block" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         Uitloggen
                     </a>
