@@ -121,15 +121,19 @@
                 },
                 email: {
                     required: '#inputPhone:blank',
-                    email: true
+                    regex: /^((([!#$%&'*+\-/=?^_`{|}~\w])|([!#$%&'*+\-/=?^_`{|}~\w][!#$%&'*+\-/=?^_`{|}~\.\w]{0,}[!#$%&'*+\-/=?^_`{|}~\w]))[@]\w+([-.]\w+)*\.\w+([-.]\w+)*)$/i
                 },
                 phone: {
-                    required: '#inputEmail:blank'
+                    required: '#inputEmail:blank',
+                    regex: /^(\+{1,2}?([0-9]{2,4}|\([0-9]{2,4}\))?(-|\s)?)?[0-9]{2,3}(-|\s)?[0-9\-]{5,10}$/i
                 }
             },
             messages: {
                 required: 'Dit is vereist.',
-                email: 'E-mailadres lijkt niet correct.'
+                firstName: 'Voornaam lijkt niet correct.',
+                lastName: 'Naam lijkt niet correct.',
+                email: 'E-mailadres lijkt niet correct.',
+                phone: 'Telefoon lijkt niet correct.'
             },
             submitHandler: function(form) {
                 if (form.valid()) {
