@@ -8,6 +8,8 @@
                 <div class="card-body">
                     <a class="btn btn-outline-dark btn-block" href="{{ route('covid19Registraties') }}">Covid-19 registraties</a>
                     <a class="btn btn-outline-dark btn-block disabled" href="{{ route('covid19Registraties') }}">Menu</a>
+                    <a class="btn btn-outline-dark btn-block disabled" href="{{ route('covid19Registraties') }}">Openingstijden</a>
+                    <a class="btn btn-outline-dark btn-block disabled" href="{{ route('covid19Registraties') }}">Beer logo afbeeldingen</a>
                     <a class="btn btn-danger btn-block" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         Uitloggen
