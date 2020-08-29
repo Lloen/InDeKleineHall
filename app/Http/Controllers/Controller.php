@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     public function show()
     {
-        return redirect('/registratie-covid-19');
+        return view('welcome');
     }
 }
