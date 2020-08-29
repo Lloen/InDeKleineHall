@@ -16,10 +16,63 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Rich Results -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Cafe",
+            "image": [],
+            "@id": "https://indekleinehal.be",
+            "name": "In De Kleine Hal",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Maastrichterstraat 30",
+                "addressLocality": "Hasselt",
+                "postalCode": "3500",
+                "addressCountry": "BE"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 50.929570,
+                "longitude": 5.339220
+            },
+            "url": "https://indekleinehal.be",
+            "telephone": "+3211229617",
+            "priceRange": "$$",
+            "openingHoursSpecification": [{
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "21:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Friday",
+                        "Saturday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "01:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Sunday",
+                    "opens": "11:00",
+                    "closes": "21:00"
+                }
+            ],
+            "menu": "http://www.indekleinehal.be/menu"
+        }
+    </script>
 </head>
 
 <body>
