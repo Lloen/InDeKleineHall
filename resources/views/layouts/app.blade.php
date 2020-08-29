@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-center text-dark" href="{{ route('covid-19') }}">✏️ Registratie Covid-19</a>
+                            <a class="nav-link text-center text-dark" href="{{ route('covid19Registration') }}">✏️ Registratie Covid-19</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-center text-dark" href="{{ route('menu') }}">🍺 Menu</a>
@@ -65,12 +65,16 @@
                             </form>
                         </li>
                         @endif
+                        <!-- <li class="nav-item d-flex flex-column">
+                            <a class="text-center text-dark" href="{{ route('menu') }}">🇬🇧</a>
+                            <a class="text-center text-dark" href="{{ route('menu') }}">🇧🇪</a>
+                        </li> -->
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
