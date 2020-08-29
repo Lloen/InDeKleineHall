@@ -11,19 +11,19 @@
     }
 
     .bgimg-1 {
-        background-image: url("{{ asset('img/Welcome.InDeKleineHal.jpg') }}");
+        background-image: url("{{ asset('img/Welcome.InDeKleineHal.webp') }}");
         min-height: 100vh;
         max-width: 100vw;
     }
 
     .bgimg-2 {
-        background-image: url("{{ asset('img/OldPicture.InDeKleineHal.jpg') }}");
+        background-image: url("{{ asset('img/OldPicture.InDeKleineHal.webp') }}");
         height: 70%;
         max-width: 100vw;
     }
 
     .bgimg-3 {
-        background-image: url("{{ asset('img/Welcome2.InDeKleineHal.jpg') }}");
+        background-image: url("{{ asset('img/Welcome2.InDeKleineHal.webp') }}");
         height: 100vh;
         max-width: 100vw;
         background-position: left;
@@ -97,17 +97,18 @@
 <div class="position-relative shadow-lg bg-light py-4 overflow-hidden bgimg-Divider">
     <div class="container px-0 mx-0">
         <div class="row" style="width: max-content; left: 100%; position: absolute;">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Duvel_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Karmeliet_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Kwak_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LaChouffe_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Leffe_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/StellaArtois_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Omer_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Chimay_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LaTrappe_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/BrugseZot_Logo.png') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Orval_Logo.png') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Duvel_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Karmeliet_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Kwak_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LaChouffe_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Leffe_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/StellaArtois_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Omer_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Chimay_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LaTrappe_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/BrugseZot_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Orval_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Carlsberg_Logo.webp') }}">
         </div>
     </div>
     <div class="card align-items-center border-0 bg-transparent">
@@ -127,6 +128,12 @@
                 Messenger
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                </svg>
+            </a>
+            <a href="tel:+3211229617" class="btn btn-outline-secondary btn-lg btn-block">
+                Call us at +32 11 229 617
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
                 </svg>
             </a>
         </div>
@@ -158,7 +165,7 @@
         </div>
     </div>
 </div>
-<!-- 
+
 @if (Cookie::get('covid19Register') == null)
 <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -178,7 +185,7 @@
         </div>
     </div>
 </div>
-@endif -->
+@endif
 
 <script type="text/javascript">
     $(window).on('load', function() {
