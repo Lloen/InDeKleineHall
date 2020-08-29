@@ -21,7 +21,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
@@ -106,7 +106,10 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $.validator.addMethod("regex", function(value, element, regexpr) {
-            return regexpr.test(value);
+            if (value)
+                return regexpr.test(value);
+            else
+                return true;
         }, "Dit lijkt niet correct.");
         $("#formCovidRegistration").validate({
             errorClass: "validation-error-class",
@@ -136,10 +139,8 @@
                 phone: 'Telefoon lijkt niet correct.'
             },
             submitHandler: function(form) {
-                if (form.valid()) {
-                    $('form input[type=submit]').attr('disabled', 'disabled');
-                    form.submit();
-                }
+                $('form input[type=submit]').attr('disabled', 'disabled');
+                form.submit();
             }
         });
     });
