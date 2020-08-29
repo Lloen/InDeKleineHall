@@ -77,8 +77,8 @@
         $('#datepicker').change(function() {
             var date = $(this).val();
             $.ajax({
-                type: 'POST',
-                url: '/dashboard/registraties-covid-19',
+                type: 'GET',
+                url: '/dashboard/registraties-covid-19/datum',
                 data: {
                     date: date
                 },
