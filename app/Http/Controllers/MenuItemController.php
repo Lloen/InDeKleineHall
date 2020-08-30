@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\MenuItem;
 use Illuminate\Http\Request;
 
-class MenuController extends Controller
+class MenuItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view("menu");
-    }
+        $data['menuItems'] = MenuItem::orderBy('name', 'asc')->paginate(10);
 
-    public function show()
-    {
-        return view("menu.list");
+        return view('menuItem.list', $data);
     }
 
     /**
@@ -28,7 +26,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('menuItem.create');
     }
 
     /**

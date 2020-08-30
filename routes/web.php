@@ -24,7 +24,6 @@ Route::get('/registratie-covid-19/afmelden', 'Covid19Controller@signOut')->name(
 Route::get('/menu', 'MenuController@show')->name('menu');
 
 // Authentication
-//Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 Route::get('/dashboard/inloggen', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/login', function () {
     return redirect()->route('login');
