@@ -17,8 +17,8 @@
     }
 
     .bgimg-2 {
-        background-image: url("{{ asset('img/OldPicture.InDeKleineHal.webp') }}");
-        height: 70%;
+        background-image: url("{{ asset('img/OldPicture2.InDeKleineHal.jpg') }}");
+        height: 70vh;
         max-width: 100vw;
     }
 
@@ -46,11 +46,13 @@
     }
 
     .beer-logo {
-        display: inline-block;
+        display: block;
         position: absolute;
-        animation: moveImage 25s linear infinite;
+        overflow: visible;
+        white-space: nowrap;
+        /* animation: moveImage 25s linear infinite;
         opacity: 0.2;
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0); */
     }
 
     @keyframes moveImage {
@@ -94,7 +96,8 @@
 <div class="bgimg-2">
 </div>
 
-<div class="position-relative shadow-lg bg-light py-4 overflow-hidden bgimg-Divider">
+<!-- MENU  -->
+<div class="position-relative shadow-lg bg-light py-4 bgimg-Divider">
     <div class="container px-0 mx-0">
         <div class="row" style="width: max-content; left: 100%; position: absolute;">
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Duvel_Logo.webp') }}">
@@ -106,9 +109,12 @@
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Omer_Logo.webp') }}">
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Chimay_Logo.webp') }}">
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LaTrappe_Logo.webp') }}">
-            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/BrugseZot_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/CuveeDesTrolls_Logo.webp') }}">
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Orval_Logo.webp') }}">
             <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Carlsberg_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/LeFort_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/CocaCola_Logo.webp') }}">
+            <img class="col-auto beer-logo" src="{{ asset('img/Beer_Logos/Lipton_Logo.webp') }}">
         </div>
     </div>
     <div class="card align-items-center border-0 bg-transparent">
