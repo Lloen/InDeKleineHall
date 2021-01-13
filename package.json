@@ -25,6 +25,6 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.0.0-alpha5",
-        "jquery-validation": "^1.19.2"
+        "jquery-validation": "^1.19.3"
     }
 }
